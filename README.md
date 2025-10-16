@@ -10,3 +10,14 @@
 
 # The Dataset
   The dataset that we decided to use is the MIMIC-IV set from PhysioNet. The reason we chose this dataset over others is that this is one of the best publicly available sets, and is the most up to date version of the MIMIC set. We acquired this dataset from PhysioNet, which is a publicly available site that has countless medical clinical datasets that can be downlaoded and used for different models. MIMIC-IV contains hospital and critical care data for patients admitted to the ED or ICU between 2008 - 2019.
+
+# Refrences
+(Update at end with correct annotation)
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC7709858/
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9113654/
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11271049/
+
+
