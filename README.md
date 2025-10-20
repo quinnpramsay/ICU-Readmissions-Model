@@ -31,6 +31,7 @@ Below we attached an image indcitive of a query we made on the data as an explic
 # Method
 - Linear Regression
 - Random Forest
+- Genetic
 - 
 # Refrences
 
