@@ -29,14 +29,15 @@ client = bigquery.Client(project=project_id)
 
 # MIMIC-IV v3.1 dataset information
 MIMIC_PROJECT = "physionet-data"
-MIMIC_DATASET = "mimiciv_3_1_hosp"
+MIMIC_DATASET_HOSP = "mimiciv_3_1_hosp"
+MIMIC_DATASET_ICU = "mimiciv_3_1_icu"
 
 print(f"\nConnected to project: {project_id}")
-print(f"Querying MIMIC-IV v3.1 dataset: {MIMIC_PROJECT}.{MIMIC_DATASET}")
+print(f"Querying MIMIC-IV v3.1 dataset: {MIMIC_PROJECT}.{MIMIC_DATASET_HOSP}")
 
 def list_tables():
     """List all tables in the MIMIC-IV v3.1 dataset"""
-    dataset_ref = f"{MIMIC_PROJECT}.{MIMIC_DATASET}"
+    dataset_ref = f"{MIMIC_PROJECT}.{MIMIC_DATASET_HOSP}"
     tables = client.list_tables(dataset_ref)
 
     print(f"\n{'='*60}")
