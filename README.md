@@ -18,7 +18,7 @@ One of the papers talks about supervised learning and risk models. These learnin
 
 
 # The Dataset
-  The dataset that we decided to use is the MIMIC-IV set from PhysioNet. The reason we chose this dataset over others is that this is one of the best publicly available sets, and is the most up to date version of the MIMIC set. We acquired this dataset from PhysioNet, which is a publicly available site that has countless medical clinical datasets that can be downlaoded and used for different models. MIMIC-IV contains hospital and critical care data for patients admitted to the ED or ICU between 2008 - 2019. MMIC-IV has three main components to it, ICU, HOSP, and Note. Hosp has hospital wide data from electronic health records that contain data, such as demographics, admissions, and laboratory results. While the icu module contains detailed clinical information from the intensive care unit, like vital signs, medications, and fluid inputs. While note provides deidentified free-text clinical notes, discharge summaries, and radiology reports.
+  The dataset that we decided to use is the MIMIC-IV set 3.1 version from PhysioNet. How we got access to this dataset is through HIPPA and Data or Specimens Only Research certifications to gain access to medical data. Medical Information Mart for Intensive Care (MIMIC)-IV, is a large deidentified dataset of patients admitted to the emergency department or an intensive care unit at the Beth Israel Deaconess Medical Center in Boston, MA. MIMIC-IV contains hospital and critical care data for patients admitted to the ED or ICU between 2008 - 2022. MMIC-IV has three main components to it, ICU, HOSP, and Note. Hosp has hospital wide data from electronic health records that contain data, such as demographics, admissions, and laboratory results. While the icu module contains detailed clinical information from the intensive care unit, like vital signs, medications, and fluid inputs. While note provides deidentified free-text clinical notes, discharge summaries, and radiology reports. This is all very useful data to use for our project as we can create a predictive model from this data using multipole differnt types of searching algorithms based on the data type.
 
 # Refrences
 (Update at end with correct annotation)
@@ -28,5 +28,7 @@ https://pmc.ncbi.nlm.nih.gov/articles/PMC7709858/
 https://pmc.ncbi.nlm.nih.gov/articles/PMC9113654/
 
 https://pmc.ncbi.nlm.nih.gov/articles/PMC11271049/
+
+https://physionet.org/content/mimiciv/3.1/#files-panel
 
 
