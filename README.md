@@ -33,6 +33,14 @@ Below we attached an image indcitive of a query we made on the data as an explic
 # Refrences
 (Update at end with correct annotation)
 
+https://www.ahajournals.org/doi/full/10.1161/CIRCULATIONAHA.115.001593 
+
+https://www.mdpi.com/2673-8392/3/2/42 
+
+https://link.springer.com/article/10.1186/s12911-018-0620-z
+
+https://doi.org/10.3390/jpm10020021 
+
 https://pmc.ncbi.nlm.nih.gov/articles/PMC7709858/
 
 https://pmc.ncbi.nlm.nih.gov/articles/PMC9113654/
