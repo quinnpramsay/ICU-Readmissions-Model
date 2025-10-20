@@ -33,4 +33,6 @@ https://pmc.ncbi.nlm.nih.gov/articles/PMC11271049/
 
 https://physionet.org/content/mimiciv/3.1/#files-panel
 
+https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT
+
 
