@@ -29,7 +29,9 @@ Below we attached an image indcitive of a query we made on the data as an explic
 <img width="269" height="597" alt="Screenshot 2025-10-20 at 6 22 48 PM" src="https://github.com/user-attachments/assets/02b77432-6110-4ed4-a6d9-c8b18fdaa3eb" />
 
 # Method
-
+- Linear Regression
+- Random Forest
+- 
 # Refrences
 (Update at end with correct annotation)
 
