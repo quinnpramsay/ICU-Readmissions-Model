@@ -34,7 +34,6 @@ MIMIC_DATASET = "mimiciv_3_1_hosp"
 print(f"\nConnected to project: {project_id}")
 print(f"Querying MIMIC-IV v3.1 dataset: {MIMIC_PROJECT}.{MIMIC_DATASET}")
 
-# ============================================================================
 def list_tables():
     """List all tables in the MIMIC-IV v3.1 dataset"""
     dataset_ref = f"{MIMIC_PROJECT}.{MIMIC_DATASET}"
