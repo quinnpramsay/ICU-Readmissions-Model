@@ -41,7 +41,7 @@ def list_tables():
     tables = client.list_tables(dataset_ref)
 
     print(f"\n{'='*60}")
-    print("Available tables in MIMIC-IV v3.1:")
+    print("Available tables in MIMIC-IV v3.1: HOSP")
     print(f"{'='*60}")
 
     table_list = []
