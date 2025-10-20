@@ -33,24 +33,25 @@ Below we attached an image indcitive of a query we made on the data as an explic
 - Random Forest
 - 
 # Refrences
-(Update at end with correct annotation)
 
-https://www.ahajournals.org/doi/full/10.1161/CIRCULATIONAHA.115.001593 
+Inan, O. T., Tenaerts, P., Prindiville, S. A., Reynolds, H. R., Dizon, D. S., Cooper-Arnold, K., Turakhia, M. P., Pletcher, M. J., Preston, K. L., Krumholz, H. M., Marlin, B. M., Mandl, K. D., & Califf, R. M. (2020). Digitizing clinical trials. Journal of Personalized Medicine, 10(2), 21. https://doi.org/10.3390/jpm10020021 
 
+Deo R. C. (2015). Machine learning in medicine. Circulation, 132(20), 1920–1930. doi:10.1161/CIRCULATIONAHA.115.001593 https://www.ahajournals.org/doi/full/10.1161/CIRCULATIONAHA.115.001593 
+
+Toma, M., & Wei, O. C. (2023). Predictive modeling in medicine. Encyclopedia, 3(2), 590–601. doi:10.3390/encyclopedia3020042
 https://www.mdpi.com/2673-8392/3/2/42 
 
-https://link.springer.com/article/10.1186/s12911-018-0620-z
+Golas, S. B., Shibahara, T., Agboola, S., Otaki, H., Sato, J., Nakae, T., Hisamitsu, T., Kojima, G., Felsted, J., Kakarmath, S., Kvedar, J., & Jethwani, K. (2018). A machine learning model to predict the risk of 30-day readmissions in patients with heart failure: a retrospective analysis of electronic medical records data. BMC Medical Informatics and Decision Making, 18(1), 44.
+https://link.springer.com/article/10.1186/s12911-018-0620-z 
 
-https://doi.org/10.3390/jpm10020021 
+Moerschbacher, A., & He, Z. (2023). Building prediction models for 30-day readmissions among icu patients using both structured and unstructured data in electronic health records. Proceedings. IEEE International Conference on Bioinformatics and Biomedicine, 2023, 4368–4373. 
+https://doi.org/10.1109/bibm58861.2023.10385612 
 
-https://pmc.ncbi.nlm.nih.gov/articles/PMC7709858/
+Mcneill, H., & Khairat, S. (2020). Impact of intensive care unit readmissions on patient outcomes and the evaluation of the national early warning score to prevent readmissions: Literature review. JMIR Perioperative Medicine, 3(1), e13782. 
+https://doi.org/10.2196/13782 
 
-https://pmc.ncbi.nlm.nih.gov/articles/PMC9113654/
+Beauvais, B., Whitaker, Z., Kim, F., & Anderson, B. (2022). Is the hospital value-based purchasing program associated with reduced hospital readmissions? Journal of Multidisciplinary Healthcare, 15, 1089–1099. 
+https://doi.org/10.2147/JMDH.S358733 
 
-https://pmc.ncbi.nlm.nih.gov/articles/PMC11271049/
-
-https://physionet.org/content/mimiciv/3.1/#files-panel
-
-https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT
 
 
