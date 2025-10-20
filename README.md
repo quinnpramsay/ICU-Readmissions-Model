@@ -20,6 +20,197 @@ One of the papers talks about supervised learning and risk models. These learnin
 # The Dataset
   The dataset that we decided to use is the MIMIC-IV set 3.1 version from PhysioNet. How we got access to this dataset is through the "Data or Specimens Only Research" certifications to gain access to medical data. Medical Information Mart for Intensive Care (MIMIC)-IV, is a large deidentified dataset of patients admitted to the emergency department or an intensive care unit at the Beth Israel Deaconess Medical Center in Boston, MA. MIMIC-IV contains hospital and critical care data for patients admitted to the ED or ICU between 2008 - 2022. MIMIC-IV contains data for over 65,000 patients admitted to an ICU and over 200,000 patients admitted to the emergency department. MMIC-IV has two main components to it, ICU and HOSP. Hosp has hospital wide data from electronic health records that contain data, such as demographics, admissions, and laboratory results. While the icu module contains detailed clinical information from the intensive care unit, like vital signs, medications, and fluid inputs. This is all very useful data to use for our project as we can create a predictive model from this data using multipole differnt types of searching algorithms based on the data type. To get access to such a large dataset, as it is 10 GB, we had to gain access to the Google Big Query file to this dataset and query specific data through google collab.
 
+ Fetching data from MIMIC-IV...
+
+Retrieved 94,458 ICU visits
+
+Sample of data:
+
+  
+    
+      subject_id
+      gender
+      stay_id
+      hadm_id
+      outcome
+    
+  
+  
+    
+      10000032
+      F
+      39553978
+      29079034
+      0
+    
+    
+      10000690
+      F
+      37081114
+      25860671
+      0
+    
+    
+      10000980
+      F
+      39765666
+      26913865
+      0
+    
+    
+      10001217
+      F
+      37067082
+      24597018
+      0
+    
+    
+      10001217
+      F
+      34592300
+      27703517
+      0
+    
+    
+      10001725
+      F
+      31205490
+      25563031
+      0
+    
+    
+      10001843
+      M
+      39698942
+      26133978
+      1
+    
+    
+      10001884
+      F
+      37510196
+      26184834
+      1
+    
+    
+      10002013
+      F
+      39060235
+      23581541
+      0
+    
+    
+      10002114
+      M
+      34672098
+      27793700
+      0
+    
+    
+      10002155
+      F
+      33685454
+      23822395
+      0
+    
+    
+      10002155
+      F
+      31090461
+      28994087
+      0
+    
+    
+      10002155
+      F
+      32358465
+      20345487
+      1
+    
+    
+      10002348
+      F
+      32610785
+      22725460
+      0
+    
+    
+      10002428
+      F
+      33987268
+      28662225
+      0
+    
+    
+      10002428
+      F
+      38875437
+      28662225
+      0
+    
+    
+      10002428
+      F
+      34807493
+      20321825
+      0
+    
+    
+      10002428
+      F
+      35479615
+      23473524
+      0
+    
+    
+      10002430
+      M
+      38392119
+      26295318
+      0
+    
+    
+      10002443
+      M
+      35044219
+      21329021
+      0
+    
+  
+Summary by Gender and Outcome:
+
+  
+    
+      gender
+      outcome
+      count
+    
+  
+  
+    
+      F
+      0
+      36501
+    
+    
+      F
+      1
+      5082
+    
+    
+      M
+      0
+      46607
+    
+    
+      M
+      1
+      6268
+    
+  
+
+Table saved to: gender_outcome_table.csv
+
 # Method
 
 # Refrences
