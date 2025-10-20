@@ -29,10 +29,16 @@ Below we attached an image indcitive of a query we made on the data as an explic
 <img width="269" height="597" alt="Screenshot 2025-10-20 at 6 22 48 PM" src="https://github.com/user-attachments/assets/02b77432-6110-4ed4-a6d9-c8b18fdaa3eb" />
 
 # Method
+Algorithms we will use:
 - Linear Regression
 - Random Forest
 - Genetic
-- 
+
+Other Algorithms that have been used:
+- XGBOOST
+- SVC
+- Feed Foward
+
 # Refrences
 
 Inan, O. T., Tenaerts, P., Prindiville, S. A., Reynolds, H. R., Dizon, D. S., Cooper-Arnold, K., Turakhia, M. P., Pletcher, M. J., Preston, K. L., Krumholz, H. M., Marlin, B. M., Mandl, K. D., & Califf, R. M. (2020). Digitizing clinical trials. Journal of Personalized Medicine, 10(2), 21. https://doi.org/10.3390/jpm10020021 
