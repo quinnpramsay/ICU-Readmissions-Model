@@ -37,7 +37,9 @@ Below we attached an image indcitive of a query we made on the data as an explic
 # Method
 Algorithms we will use:
 - Linear Regression
+    This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent      variables (like lab test values) and dependent variables (like readmission likelihood). 
 - Random Forest
+    
 - Genetic
 
 Other Algorithms that have been used:
