@@ -36,14 +36,14 @@ Below we attached an image indcitive of a query we made on the data as an explic
 
 # Method
 Algorithms we will use:
-- Linear Regression
+- Linear Regression:
     This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent      variables (like lab test values) and dependent variables (like readmission likelihood). 
 
-- Random Forest
+- Random Forest:
     This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent variables (like lab test values) and dependent variables (like readmission likelihood).
 
-- Genetic
-    
+- Genetic:
+    This algorithm is an optimization technique that uses natural selection. This helps discover feature combinations that can’t be found through conventional techniques. This project will use it to optimize model hyperparameters and select the most relevant clinical features. 
 
 Other Algorithms that have been used:
 - XGBOOST
