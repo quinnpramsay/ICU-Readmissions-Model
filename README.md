@@ -46,9 +46,14 @@ Algorithms we will use:
     This algorithm is an optimization technique that uses natural selection. This helps discover feature combinations that can’t be found through conventional techniques. This project will use it to optimize model hyperparameters and select the most relevant clinical features. 
 
 Other Algorithms that have been used:
-- XGBOOST
-- SVC
-- Feed Foward
+- XGBOOST:
+    This is used most of the time on the dataset because of its speed, scalability and ability to handle data that is missing. This algorithm has a solid accuracy for mortality and readmission tasks.
+
+- SVC:
+    This method is helpful for dividing complex classes with small amounts of data. The only downside about this method is the expensiveness and it can be less interpretable. 
+
+- Feed Foward:
+    This is used in deep-learning studies on the MIMIC-III dataset for modeling complex dependencies. These models can be beneficial, but they lack transparency which can be less trustworthy. 
 
 # Refrences
 
