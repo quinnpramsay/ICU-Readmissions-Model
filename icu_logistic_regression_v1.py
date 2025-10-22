@@ -109,11 +109,6 @@ y_prob = log_reg.predict_proba(X_test_scaled)[:, 1]
 threshold = 0.5
 y_pred = (y_prob >= threshold).astype(int)
 
-for threshold in [0.3, 0.4, 0.5]:
-    y_pred_new = (y_prob >= threshold).astype(int)
-    print(f"\nThreshold: {threshold}")
-    print(classification_report(y_test, y_pred_new))
-
 print(" Model Evaluation and Results")
 print("-" * 54)
 roc_auc = roc_auc_score(y_test, y_prob)
