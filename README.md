@@ -6,33 +6,75 @@
   Since both of us are concetrate on Artificial Intelligence and Machine Learning, we think this project is a great way to practice and grow our skills. ICU readmissions are expensive and harmful for patients, so this project also shows how machine learning can improve predictions while touching on important ideas like clinical usefulness, data ethics, and explainability.
 
 # Overview
-  When it comes to patient health, ICU readmissions cause a 6 to 7 times higher odds of death independent of other factors. This issue is apparent nationally, but also locally specifically in the Piedmont region of North Carolina when it comes to Surgical Trauma ICU readmissions. The most common predictor for surgical trauma ICU readmissions within this area is respiratory failure. As our University is located within the Piedmont Triad our hope is that the research we conduct can help discover underlying factors causing this issue. In certain studies, readmission rates can get as high as 13.4 percent in just 7 days, not even the full 30 days that we are studying. When it comes to patients recieving Medicare benifits, one fifth of patients are readmitted within 30 days and 67% are readmitted within 90 days. Not only do these readmission rates have a patient health cost, they also have a national monetary costs for hospitals. the cost of just Medicare readmissions in 2004 was over 17 billion dollars of avoidable costs. Nationally the overall cost annually of patient readmission if over 52.4 billion dollars with the average cost being around $15,200. 
+ When it comes to patient health, ICU readmissions are associated with a six- to seven-fold increase in the odds of death, independent of other factors. This issue is evident not only nationally but also locally, particularly in the Piedmont region of North Carolina, where Surgical Trauma ICU readmissions are a notable concern. In this area, respiratory failure is the most common predictor of surgical trauma ICU readmission. Since our university is located within the Piedmont Triad, we hope that the research we conduct can help uncover the underlying factors driving this problem. In some studies, readmission rates can reach as high as 13.4% within just seven days, not even the full 30-day period that we are examining. Among patients receiving Medicare benefits, one in five is readmitted within 30 days, and 67% are readmitted within 90 days. These readmissions not only carry serious consequences for patient health but also impose a significant financial burden on hospitals. In 2004 alone, avoidable Medicare readmissions cost over $17 billion. Nationally, the total annual cost of patient readmissions exceeds $52.4 billion, with the average cost per readmission around $15,200. 
 
 # Related Work Research
-When researching 5 scholarly sources for the milestone, we found that with predicting ICU readmission and applying machine learning models, there are several methods that can take place. Below are the 5 papers that we put into groups.
-- The group of structured data-driven models incorporates the paper about ICU readmission predictions using MIMIC-III structured EHR data. A strength of this was how it demonstrated the functionality of standard classifiers on structured attributes. However, there is a weakness of how it is limited by the reliance on structured data and small sample sizes. Our project is wanting to expand past structured data by bringing text and imaging to help get a functioning model. 
-- Two papers are grouped with text and clinical notes with NLP. One paper talks about BERT and another uses C-path. In our project, we also plan on using Bio_ClinicalBERT for discharge notes. The strength of using this is to get richer depictions, and to help find hidden signals in data. Methods of text embedding require a lot of tuning. 
+The problem with predicting risk of hospital readmissions was solved using several sources. These sources were classified in different categories. [1] being a data-driven model, [2] being in which the authors used clinical notes such as BERT, [3] talks about supervised learning and also risk models and finally [4] talks about the opposite of group [3] which is unsupervised learning and how it used techniques like clustering.
+
+The group of structured data-driven models incorporates the paper about ICU readmission predictions using MIMIC-III structured EHR data.] A strength of this was how it demonstrated the functionality of standard classifiers on structured attributes. However, there is a weakness of how it is limited by the reliance on structured data and small sample sizes. Our project is wanting to expand past structured data by bringing text and imaging to help get a functioning model. 
+
+Two papers are grouped with text and clinical notes with NLP. One paper talks about BERT and another uses C-path. In our project, we also plan on using Bio_ClinicalBERT for discharge notes. The strength of using this is to get richer depictions, and to help find hidden signals in data. Methods of text embedding require a lot of tuning. 
+
 One of the papers talks about supervised learning and risk models. These learning examples show how machine learning can extend a physician's performance. These models however focus on tasks that physicians already do well at. In our project, we want to improve prediction in a complex problem where human accuracy is scarce. 
-- On the other hand, unsupervised learning was also talked about in the paper on heart failure readmission patients. It talked of methods of clustering, dimensionality reduction and phenotypic grouping and what they identified as subgroups with distinct risks and outcomes. This was really good at finding hidden patient subtypes, but it required very large datasets. Our project will be mostly supervised learning, but maybe later on in the project we can incorporate multimodal embeddings to discover subgroups if needed. 
-- The current state-of-the-art methods in prediction ICU readmissions incorporate structured and unstructured data advanced techniques. Old methods like structured EHR data, Random Forest. Logistic regression and XGBoost are still very helpful and are powerful due to their interpretability. Recently individual work has incorporated unstructured clinical notes, using language models like BERT, and ClinicalBERT to help extract linguistic information that structured fields cannot grab. However, there are some barriers to worry about when using these state of the art methods. Some of these barriers can include the need for large datasets, computational cost and hyperameter tuning at scale.
+
+On the other hand, unsupervised learning was also talked about in the paper on heart failure readmission patients. It talked of methods of clustering, dimensionality reduction and phenotypic grouping and what they identified as subgroups with distinct risks and outcomes. This method does good at finding hidden patient subtypes, but it requires very large datasets. Our project will be mostly supervised learning, but maybe later on in the project we can incorporate multimodal embeddings to discover subgroups if needed. 
+
+The current state-of-the-art methods in prediction ICU readmissions incorporate structured and unstructured data advanced techniques. Old methods like structured EHR data, Random Forest. Logistic regression and XGBoost are still very helpful and are powerful due to their interpretability. Recently individual work has incorporated unstructured clinical notes, using language models like BERT, and ClinicalBERT to help extract linguistic information that structured fields cannot grab. However, there are some barriers to worry about when using these state of the art methods. Some of these barriers can include the need for large datasets, computational cost and hyperameter tuning at scale.
+
 
 
 # The Dataset
-  The dataset that we decided to use is the MIMIC-IV set 3.1 version from PhysioNet. How we got access to this dataset is through the "Data or Specimens Only Research" certifications to gain access to medical data. Medical Information Mart for Intensive Care (MIMIC)-IV, is a large deidentified dataset of patients admitted to the emergency department or an intensive care unit at the Beth Israel Deaconess Medical Center in Boston, MA. MIMIC-IV contains hospital and critical care data for patients admitted to the ED or ICU between 2008 - 2022. MIMIC-IV contains data for over 65,000 patients admitted to an ICU and over 200,000 patients admitted to the emergency department. MMIC-IV has two main components to it, ICU and HOSP. Hosp has hospital wide data from electronic health records that contain data, such as demographics, admissions, and laboratory results. While the icu module contains detailed clinical information from the intensive care unit, like vital signs, medications, and fluid inputs. This is all very useful data to use for our project as we can create a predictive model from this data using multipole differnt types of searching algorithms based on the data type. To get access to such a large dataset, as it is 10 GB, we had to gain access to the Google Big Query file to this dataset and query specific data through google collab.
+  For our project, we chose to use the MIMIC-IV dataset, version 3.1, available through PhysioNet. We gained access to this dataset by completing the "Data or Specimens Only Research" certification, which allows researchers to work with medical data. The Medical Information Mart for Intensive Care (MIMIC)-IV is a large, de-identified dataset containing information on patients admitted to the emergency department (ED) or an intensive care unit (ICU) at the Beth Israel Deaconess Medical Center in Boston, MA. MIMIC-IV includes hospital and critical care data for patients admitted between 2008 and 2022, covering over 65,000 ICU admissions and more than 200,000 ED visits.
+
+MIMIC-IV is organized into two main components: ICU and HOSP. The HOSP module contains hospital wide data extracted from electronic health records, including demographics, admissions, and laboratory results. The ICU module, on the other hand, provides detailed clinical information such as vital signs, medications, and fluid inputs. This rich dataset is particularly valuable for our project, as it allows us to develop predictive models using multiple types of algorithms tailored to different data types.
+
+Because the dataset is large, around 10 GB, we accessed it through Google BigQuery and queried specific data using Google Colab, which enabled us to efficiently work with the information we needed for analysis.
+
+Below we attached an image indcitive of a query we made on the data as an explicit example of what our data looks like and some features we will incorperate. As seen below, we queried data from the MIMIC-IV database to examine ICU readmissions and patient outcomes. Using SQL, we joined the patients, ICU stays, and admissions tables to retrieve key information, including patient demographics, ICU admission details, and hospital outcomes. The resulting dataset allows us to analyze patterns such as gender differences and mortality rates, generate summary statistics, and explore predictors of ICU readmission.
+
+<img width="269" height="597" alt="Screenshot 2025-10-20 at 6 22 48 PM" src="https://github.com/user-attachments/assets/02b77432-6110-4ed4-a6d9-c8b18fdaa3eb" />
 
 # Method
+Algorithms we will use:
+- Linear Regression:
+    This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent      variables (like lab test values) and dependent variables (like readmission likelihood). 
+
+- Random Forest:
+    This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent variables (like lab test values) and dependent variables (like readmission likelihood).
+
+- Genetic:
+    This algorithm is an optimization technique that uses natural selection. This helps discover feature combinations that can’t be found through conventional techniques. This project will use it to optimize model hyperparameters and select the most relevant clinical features. 
+
+Other Algorithms that have been used:
+- XGBOOST:
+    This is used most of the time on the dataset because of its speed, scalability and ability to handle data that is missing. This algorithm has a solid accuracy for mortality and readmission tasks.
+
+- SVC:
+    This method is helpful for dividing complex classes with small amounts of data. The only downside about this method is the expensiveness and it can be less interpretable. 
+
+- Feed Foward:
+    This is used in deep-learning studies on the MIMIC-III dataset for modeling complex dependencies. These models can be beneficial, but they lack transparency which can be less trustworthy. 
 
 # Refrences
-(Update at end with correct annotation)
 
-https://pmc.ncbi.nlm.nih.gov/articles/PMC7709858/
+Inan, O. T., Tenaerts, P., Prindiville, S. A., Reynolds, H. R., Dizon, D. S., Cooper-Arnold, K., Turakhia, M. P., Pletcher, M. J., Preston, K. L., Krumholz, H. M., Marlin, B. M., Mandl, K. D., & Califf, R. M. (2020). Digitizing clinical trials. Journal of Personalized Medicine, 10(2), 21. https://doi.org/10.3390/jpm10020021 
 
-https://pmc.ncbi.nlm.nih.gov/articles/PMC9113654/
+Deo R. C. (2015). Machine learning in medicine. Circulation, 132(20), 1920–1930. doi:10.1161/CIRCULATIONAHA.115.001593 https://www.ahajournals.org/doi/full/10.1161/CIRCULATIONAHA.115.001593 
 
-https://pmc.ncbi.nlm.nih.gov/articles/PMC11271049/
+Toma, M., & Wei, O. C. (2023). Predictive modeling in medicine. Encyclopedia, 3(2), 590–601. doi:10.3390/encyclopedia3020042
+https://www.mdpi.com/2673-8392/3/2/42 
 
-https://physionet.org/content/mimiciv/3.1/#files-panel
+Golas, S. B., Shibahara, T., Agboola, S., Otaki, H., Sato, J., Nakae, T., Hisamitsu, T., Kojima, G., Felsted, J., Kakarmath, S., Kvedar, J., & Jethwani, K. (2018). A machine learning model to predict the risk of 30-day readmissions in patients with heart failure: a retrospective analysis of electronic medical records data. BMC Medical Informatics and Decision Making, 18(1), 44.
+https://link.springer.com/article/10.1186/s12911-018-0620-z 
 
-https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT
+Moerschbacher, A., & He, Z. (2023). Building prediction models for 30-day readmissions among icu patients using both structured and unstructured data in electronic health records. Proceedings. IEEE International Conference on Bioinformatics and Biomedicine, 2023, 4368–4373. 
+https://doi.org/10.1109/bibm58861.2023.10385612 
+
+Mcneill, H., & Khairat, S. (2020). Impact of intensive care unit readmissions on patient outcomes and the evaluation of the national early warning score to prevent readmissions: Literature review. JMIR Perioperative Medicine, 3(1), e13782. 
+https://doi.org/10.2196/13782 
+
+Beauvais, B., Whitaker, Z., Kim, F., & Anderson, B. (2022). Is the hospital value-based purchasing program associated with reduced hospital readmissions? Journal of Multidisciplinary Healthcare, 15, 1089–1099. 
+https://doi.org/10.2147/JMDH.S358733 
+
 
 
