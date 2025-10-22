@@ -32,23 +32,4 @@ MIMIC_PROJECT = "physionet-data"
 MIMIC_DATASET_HOSP = "mimiciv_3_1_hosp"
 MIMIC_DATASET_ICU = "mimiciv_3_1_icu"
 
-print(f"\nConnected to project: {project_id}")
-print(f"Querying MIMIC-IV v3.1 dataset: {MIMIC_PROJECT}.{MIMIC_DATASET_HOSP}")
 
-def list_tables():
-    """List all tables in the MIMIC-IV v3.1 dataset"""
-    dataset_ref = f"{MIMIC_PROJECT}.{MIMIC_DATASET_HOSP}"
-    tables = client.list_tables(dataset_ref)
-
-    print(f"\n{'='*60}")
-    print("Available tables in MIMIC-IV v3.1: HOSP")
-    print(f"{'='*60}")
-
-    table_list = []
-    for table in tables:
-        table_list.append(table.table_id)
-        print(f"  - {table.table_id}")
-
-    return table_list
-
-tables = list_tables()
