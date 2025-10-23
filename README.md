@@ -33,8 +33,9 @@ Because the dataset is large, around 10 GB, we accessed it through Google BigQue
 
 # Method
 Algorithms we will use:
-- Linear Regression:
-    This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent      variables (like lab test values) and dependent variables (like readmission likelihood). 
+
+- Logistic Regression:
+    Logistic Regression is a method used to predict probability of a binary outcome i.e. yes/no 1/0. This works by using the logistic function to model the relation between variables in the dataset and transforming the output as a probability between 1 and 0. We will use a predefined value like 0.5 to move the outcome if it is over that to 1 or if not move it to 0.  
 
 - Random Forest:
     This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent variables (like lab test values) and dependent variables (like readmission likelihood).
