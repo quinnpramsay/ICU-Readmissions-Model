@@ -30,9 +30,6 @@ MIMIC-IV is organized into two main components: ICU and HOSP. The HOSP module co
 
 Because the dataset is large, around 10 GB, we accessed it through Google BigQuery and queried specific data using Google Colab, which enabled us to efficiently work with the information we needed for analysis.
 
-Below we attached an image indcitive of a query we made on the data as an explicit example of what our data looks like and some features we will incorperate. As seen below, we queried data from the MIMIC-IV database to examine ICU readmissions and patient outcomes. Using SQL, we joined the patients, ICU stays, and admissions tables to retrieve key information, including patient demographics, ICU admission details, and hospital outcomes. The resulting dataset allows us to analyze patterns such as gender differences and mortality rates, generate summary statistics, and explore predictors of ICU readmission.
-
-<img width="269" height="597" alt="Screenshot 2025-10-20 at 6 22 48 PM" src="https://github.com/user-attachments/assets/02b77432-6110-4ed4-a6d9-c8b18fdaa3eb" />
 
 # Method
 Algorithms we will use:
