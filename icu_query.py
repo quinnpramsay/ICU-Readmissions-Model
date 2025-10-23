@@ -38,7 +38,6 @@ query = f"""WITH icu_stays AS (
         LEAD(stay_id) OVER (PARTITION BY subject_id ORDER BY intime) as next_stay_id
     FROM `{MIMIC_PROJECT}.{MIMIC_DATASET_ICU}.icustays` icus
 ),
-
 demographics AS (
     SELECT
         subject_id,
@@ -46,24 +45,20 @@ demographics AS (
         CASE WHEN gender = 'M' THEN 1 ELSE 0 END as is_male
     FROM `{MIMIC_PROJECT}.{MIMIC_DATASET_HOSP}.patients`
 ),
-
-comorbidities AS (
+diagnosis_counts AS (
     SELECT
         hadm_id,
-        MAX(CASE WHEN icd_version = 9 THEN 1 ELSE 0 END) as has_icd9,
         COUNT(DISTINCT icd_code) as num_diagnoses
     FROM `{MIMIC_PROJECT}.{MIMIC_DATASET_HOSP}.diagnoses_icd`
     GROUP BY hadm_id
 ),
-
-procedures AS (
+procedure_counts AS (
     SELECT
         hadm_id,
         COUNT(*) as num_procedures
     FROM `{MIMIC_PROJECT}.{MIMIC_DATASET_HOSP}.procedures_icd`
     GROUP BY hadm_id
 ),
-
 prior_icu AS (
     SELECT
         subject_id,
@@ -72,29 +67,24 @@ prior_icu AS (
                        ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) as prior_icu_count
     FROM `{MIMIC_PROJECT}.{MIMIC_DATASET_ICU}.icustays`
 )
-
 SELECT
     icus.*,
     dem.age,
     dem.is_male,
-    COALESCE(comorb.num_diagnoses, 0) as num_diagnoses,
+    COALESCE(dx.num_diagnoses, 0) as num_diagnoses,
     COALESCE(proc.num_procedures, 0) as num_procedures,
     COALESCE(prior.prior_icu_count, 0) as prior_icu_count,
-
-
     CASE
         WHEN DATETIME_DIFF(next_icu_intime, outtime, DAY) <= 30
         AND DATETIME_DIFF(next_icu_intime, outtime, DAY) >= 0
         THEN 1
         ELSE 0
     END as readmitted_30day
-
 FROM icu_stays icus
 LEFT JOIN demographics dem ON icus.subject_id = dem.subject_id
-LEFT JOIN comorbidities comorb ON icus.hadm_id = comorb.hadm_id
-LEFT JOIN procedures proc ON icus.hadm_id = proc.hadm_id
+LEFT JOIN diagnosis_counts dx ON icus.hadm_id = dx.hadm_id
+LEFT JOIN procedure_counts proc ON icus.hadm_id = proc.hadm_id
 LEFT JOIN prior_icu prior ON icus.stay_id = prior.stay_id
 ORDER BY icus.subject_id, icus.intime
 """
-
 df_readmissions = client.query(query).to_dataframe()
