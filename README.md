@@ -31,11 +31,16 @@ Algorithms we will use:
 
 #Resources
 https://github.com/YaronBlinder/MIMIC-III_readmission/blob/master/all_data.sql
-
-
-
-Beauvais, B., Whitaker, Z., Kim, F., & Anderson, B. (2022). Is the hospital value-based purchasing program associated with reduced hospital readmissions? Journal of Multidisciplinary Healthcare, 15, 1089–1099. 
+https://www.ahajournals.org/doi/full/10.1161/CIRCULATIONAHA.115.001593 
+https://www.mdpi.com/2673-8392/3/2/42 
+https://link.springer.com/article/10.1186/s12911-018-0620-z
+https://doi.org/10.3390/jpm10020021 
+https://pmc.ncbi.nlm.nih.gov/articles/PMC7709858/
 https://doi.org/10.2147/JMDH.S358733 
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9113654/
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11271049/
+https://physionet.org/content/mimiciv/3.1/#files-panel
+https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT
 
 
 
