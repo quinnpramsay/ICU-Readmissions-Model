@@ -29,7 +29,8 @@ Algorithms we will use:
 
 -XGBoost
 
-#Resources
+# Resources
+
 https://github.com/YaronBlinder/MIMIC-III_readmission/blob/master/all_data.sql
 https://www.ahajournals.org/doi/full/10.1161/CIRCULATIONAHA.115.001593 
 https://www.mdpi.com/2673-8392/3/2/42 
