@@ -126,10 +126,6 @@ feature_cols = ['icu_los_days','age','is_male','num_diagnoses','num_procedures',
 X = df_model[feature_cols]
 y = df_model['readmitted_30day']
 
-print("Data Set Information"/n)
-print("No Readmission: {(y==0).sum()}")
-print("Readmission: {(y==1).sum()}")
-
 # Training Criteria
 print("Training Model...")
 X_train, X_test, y_train, y_test = train_test_split(
