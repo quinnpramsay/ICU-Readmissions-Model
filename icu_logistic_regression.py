@@ -111,6 +111,7 @@ LEFT JOIN admission_info adm ON icus.hadm_id = adm.hadm_id
 ORDER BY icus.subject_id, icus.intime
 """
 
+print("Getting data from MIMIC-IV...")
 df_readmissions = client.query(query).to_dataframe()
 
 # Turn the readmissions data frame into the model data frame
@@ -125,7 +126,12 @@ feature_cols = ['icu_los_days','age','is_male','num_diagnoses','num_procedures',
 X = df_model[feature_cols]
 y = df_model['readmitted_30day']
 
+print("Data Set Information"/n)
+print("No Readmission: {(y==0).sum()}")
+print("Readmission: {(y==1).sum()}")
+
 # Training Criteria
+print("Training Model...")
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
     test_size=0.2,
@@ -150,7 +156,7 @@ print("Model Trained.")
 
 # Make Predictions
 y_prob = log_reg.predict_proba(X_test_scaled)[:, 1]
-threshold = 0.52
+threshold = 0.502
 y_pred = (y_prob >= threshold).astype(int)
 
 # Build output to see how good the prediction model performed
