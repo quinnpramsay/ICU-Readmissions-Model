@@ -152,7 +152,7 @@ print("Model Trained.")
 
 # Make Predictions
 y_prob = log_reg.predict_proba(X_test_scaled)[:, 1]
-threshold = 0.502
+threshold = 0.62
 y_pred = (y_prob >= threshold).astype(int)
 
 # Build output to see how good the prediction model performed
