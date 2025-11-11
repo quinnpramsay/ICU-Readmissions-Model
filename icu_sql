@@ -50,3 +50,5 @@ SELECT
     ELSE 0
   END AS readmitted_30day
 FROM icu_with_next;
+
+# Need to add prior ICU admission in the last year, amount of days in the hospital, number of procedures, and number of diagnoses.
