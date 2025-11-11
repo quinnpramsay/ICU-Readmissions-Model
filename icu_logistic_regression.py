@@ -22,7 +22,6 @@ MIMIC_PROJECT = "physionet-data"
 MIMIC_DATASET_HOSP = "mimiciv_3_1_hosp"
 MIMIC_DATASET_ICU = "mimiciv_3_1_icu"
 
-print("Getting data from MIMIC-IV...")
 df_readmissions = client.query(query).to_dataframe()
 
 # Turn the readmissions data frame into the model data frame
