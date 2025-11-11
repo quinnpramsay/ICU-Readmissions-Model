@@ -9,7 +9,7 @@
 
 MIMIC-IV is organized into two main components: ICU and HOSP. The HOSP module contains hospital wide data extracted from electronic health records, including demographics, admissions, and laboratory results. The ICU module, on the other hand, provides detailed clinical information such as vital signs, medications, and fluid inputs. This rich dataset is particularly valuable for our project, as it allows us to develop predictive models using multiple types of algorithms tailored to different data types.
 
-Because the dataset is large, around 10 GB, we accessed it through Google BigQuery. Inside Google BigQuery you create your own project, and tehn use SQL to create your own dataset from the publicly available datasets you have access to. If you would like to see the query we used to make our dataset before the modifications within our models, check out the "icu_sql" file. 
+Because the dataset is large, around 10 GB, we accessed it through Google BigQuery. Inside Google BigQuery you create your own project, and then use SQL to create your own dataset from the publicly available datasets you have access to. If you would like to see the query we used to make our dataset before the modifications within our models, check out the "icu_sql" file. 
 
 
 # Method
