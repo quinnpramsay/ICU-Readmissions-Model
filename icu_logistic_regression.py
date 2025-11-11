@@ -29,8 +29,7 @@ df_readmissions = client.query(query).to_dataframe()
 df_model = df_readmissions.copy()
 # converts care units into numerical values for interpretation
 # remove all teh NaN from the model
-df_model = df_model.dropna(subset=['icu_los_days'])
-df_model = pd.get_dummies(df_model, columns=['first_careunit', 'last_careunit'], drop_first=True)
+
 feature_cols = ['icu_los_days','age','is_male','num_diagnoses','num_procedures','prior_icu_count',] + [col for col in df_model.columns if 'careunit' in col]
 
 #set model variables
