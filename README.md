@@ -17,7 +17,27 @@ Logistic Regression models look like a sigmoid function between 0 and 1 based on
 
 To run the Logistic Regression model, given in the files under "icu_logistic_regression.py" you will need to make sure that the dataset fits the same as the icu_sql query. Then you have to set any non numerical values from the dataset to numerical values and then use the sclaer function from sklearn to overall fit each type of value into the model at the same size. The output from our model looks like this. 
 
+------------------------------------------------------
+             Model Evaluation and Results
+------------------------------------------------------
+AUCROC Score:  0.745
+Good Performance
+------------------------------------------------------
+Classification Report
+              precision    recall  f1-score   support
 
+         0.0       0.93      0.80      0.86     14733
+         1.0       0.25      0.55      0.35      1855
+
+    accuracy                           0.77     16588
+   macro avg       0.59      0.67      0.60     16588
+weighted avg       0.86      0.77      0.80     16588
+
+------------------------------------------------------
+Confusion Matrix
+[[11732  3001]
+ [  833  1022]]
+------------------------------------------------------
 
 # Random Forest
 This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent variables (like lab test values) and dependent variables (like readmission likelihood).
