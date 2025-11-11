@@ -11,17 +11,14 @@ MIMIC-IV is organized into two main components: ICU and HOSP. The HOSP module co
 
 Because the dataset is large, around 10 GB, we accessed it through Google BigQuery. Inside Google BigQuery you create your own project, and then use SQL to create your own dataset from the publicly available datasets you have access to. If you would like to see the query we used to make our dataset before the modifications within our models, check out the "icu_sql" file. 
 
+# Logistic Regression
+Logistic Regression is a method used to predict probability of a binary outcome i.e. yes/no 1/0. This works by using the logistic function to model the relation between variables in the dataset and transforming the output as a probability between 1 and 0. We will use a predefined value like 0.5 to move the outcome if it is over that to 1 or if not move it to 0.  
 
-# Method
-Algorithms we will use:
+# Random Forest
+This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent variables (like lab test values) and dependent variables (like readmission likelihood).
 
-- Logistic Regression:
-    Logistic Regression is a method used to predict probability of a binary outcome i.e. yes/no 1/0. This works by using the logistic function to model the relation between variables in the dataset and transforming the output as a probability between 1 and 0. We will use a predefined value like 0.5 to move the outcome if it is over that to 1 or if not move it to 0.  
+# XGBoost
 
-- Random Forest:
-    This will be a bassline predictive model that will be used for establishing a reference for performance outcome. It takes it as a linear relationship between independent variables (like lab test values) and dependent variables (like readmission likelihood).
-
--XGBoost
 
 # Resources
 
