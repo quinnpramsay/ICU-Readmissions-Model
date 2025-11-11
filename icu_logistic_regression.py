@@ -30,7 +30,7 @@ df_model = df_readmissions.copy()
 # converts care units into numerical values for interpretation
 # remove all teh NaN from the model
 
-feature_cols = ['icu_los_days','age','is_male','num_diagnoses','num_procedures','prior_icu_count',] + [col for col in df_model.columns if 'careunit' in col]
+feature_cols = 
 
 #set model variables
 X = df_model[feature_cols]
