@@ -7,6 +7,39 @@ WITH drg_first AS (
     ROW_NUMBER() OVER (PARTITION BY hadm_id ORDER BY drg_code) AS rn
   FROM `physionet-data.mimiciv_3_1_hosp.drgcodes`
 ),
+prior_icu_counts AS (
+  SELECT
+    ie.subject_id,
+    ie.intime as current_intime,
+    COUNT(DISTINCT ie_prior.stay_id) as prior_icu_admits_last_year
+  FROM
+    `physionet-data.mimiciv_3_1_icu.icustays` ie
+  LEFT JOIN
+    `physionet-data.mimiciv_3_1_icu.icustays` ie_prior
+    ON ie.subject_id = ie_prior.subject_id
+    AND ie_prior.intime < ie.intime
+    AND DATETIME_DIFF(ie.intime, ie_prior.intime, DAY) <= 365
+  GROUP BY
+    ie.subject_id, ie.intime
+),
+procedure_counts AS (
+  SELECT
+    hadm_id,
+    COUNT(DISTINCT icd_code) as num_procedures
+  FROM
+    `physionet-data.mimiciv_3_1_hosp.procedures_icd`
+  GROUP BY
+    hadm_id
+),
+diagnosis_counts AS (
+  SELECT
+    hadm_id,
+    COUNT(DISTINCT icd_code) as num_diagnoses
+  FROM
+    `physionet-data.mimiciv_3_1_hosp.diagnoses_icd`
+  GROUP BY
+    hadm_id
+),
 icu_with_next AS (
   SELECT 
     ie.subject_id,
@@ -26,6 +59,10 @@ icu_with_next AS (
     d.drg_severity,
     (p.anchor_year - p.anchor_age) AS birth_year,
     (EXTRACT(YEAR FROM a.admittime) - (p.anchor_year - p.anchor_age)) AS age,
+    DATETIME_DIFF(a.dischtime, a.admittime, DAY) as hospital_days,
+    COALESCE(pic.prior_icu_admits_last_year, 0) as prior_icu_admits_last_year,
+    COALESCE(pc.num_procedures, 0) as num_procedures,
+    COALESCE(dc.num_diagnoses, 0) as num_diagnoses,
     LEAD(ie.intime) OVER (PARTITION BY ie.subject_id ORDER BY ie.intime) AS next_icu_intime
   FROM 
     `physionet-data.mimiciv_3_1_icu.icustays` ie
@@ -38,6 +75,15 @@ icu_with_next AS (
   LEFT JOIN
     drg_first d
     ON ie.hadm_id = d.hadm_id AND d.rn = 1
+  LEFT JOIN
+    prior_icu_counts pic
+    ON ie.subject_id = pic.subject_id AND ie.intime = pic.current_intime
+  LEFT JOIN
+    procedure_counts pc
+    ON ie.hadm_id = pc.hadm_id
+  LEFT JOIN
+    diagnosis_counts dc
+    ON ie.hadm_id = dc.hadm_id
   WHERE 
     a.hospital_expire_flag = 0
 )
