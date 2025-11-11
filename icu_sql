@@ -1,6 +1,13 @@
 CREATE OR REPLACE TABLE 
   `model_data.icu_survivors` AS
-WITH icu_with_next AS (
+WITH drg_first AS (
+  SELECT 
+    hadm_id,
+    drg_severity,
+    ROW_NUMBER() OVER (PARTITION BY hadm_id ORDER BY drg_code) AS rn
+  FROM `physionet-data.mimiciv_3_1_hosp.drgcodes`
+),
+icu_with_next AS (
   SELECT 
     ie.subject_id,
     ie.hadm_id,
@@ -16,6 +23,7 @@ WITH icu_with_next AS (
     p.anchor_age,
     p.anchor_year,
     p.gender,
+    d.drg_severity,
     (p.anchor_year - p.anchor_age) AS birth_year,
     (EXTRACT(YEAR FROM a.admittime) - (p.anchor_year - p.anchor_age)) AS age,
     LEAD(ie.intime) OVER (PARTITION BY ie.subject_id ORDER BY ie.intime) AS next_icu_intime
@@ -27,6 +35,9 @@ WITH icu_with_next AS (
   INNER JOIN 
     `physionet-data.mimiciv_3_1_hosp.patients` p
     ON ie.subject_id = p.subject_id
+  LEFT JOIN
+    drg_first d
+    ON ie.hadm_id = d.hadm_id AND d.rn = 1
   WHERE 
     a.hospital_expire_flag = 0
 )
