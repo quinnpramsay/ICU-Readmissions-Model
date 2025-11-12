@@ -4,14 +4,16 @@ WITH drg_first AS (
   SELECT 
     hadm_id,
     drg_severity,
+    drg_mortality,
     ROW_NUMBER() OVER (PARTITION BY hadm_id ORDER BY drg_code) AS rn
   FROM `physionet-data.mimiciv_3_1_hosp.drgcodes`
 ),
-prior_icu_counts AS (
+prior_icu_info AS (
   SELECT
     ie.subject_id,
     ie.intime as current_intime,
-    COUNT(DISTINCT ie_prior.stay_id) as prior_icu_admits_last_year
+    COUNT(DISTINCT ie_prior.stay_id) as prior_icu_admits_last_year,
+    MAX(ie_prior.outtime) as last_icu_outtime
   FROM
     `physionet-data.mimiciv_3_1_icu.icustays` ie
   LEFT JOIN
@@ -40,6 +42,21 @@ diagnosis_counts AS (
   GROUP BY
     hadm_id
 ),
+comorbidities AS (
+  SELECT
+    hadm_id,
+    MAX(CASE WHEN icd_code LIKE 'I50%' OR icd_code LIKE '428%' THEN 1 ELSE 0 END) as chf,
+    MAX(CASE WHEN icd_code LIKE 'I25%' OR icd_code LIKE '414%' THEN 1 ELSE 0 END) as cad,
+    MAX(CASE WHEN icd_code LIKE 'E11%' OR icd_code LIKE '250%' THEN 1 ELSE 0 END) as diabetes,
+    MAX(CASE WHEN icd_code LIKE 'J44%' OR icd_code LIKE '496%' THEN 1 ELSE 0 END) as copd,
+    MAX(CASE WHEN icd_code LIKE 'N18%' OR icd_code LIKE '585%' THEN 1 ELSE 0 END) as ckd,
+    MAX(CASE WHEN icd_code LIKE 'I48%' OR icd_code LIKE '4273%' THEN 1 ELSE 0 END) as afib,
+    MAX(CASE WHEN icd_code LIKE 'C%' OR icd_code LIKE '1%' OR icd_code LIKE '2%' THEN 1 ELSE 0 END) as cancer
+  FROM
+    `physionet-data.mimiciv_3_1_hosp.diagnoses_icd`
+  GROUP BY
+    hadm_id
+),
 icu_with_next AS (
   SELECT 
     ie.subject_id,
@@ -57,12 +74,27 @@ icu_with_next AS (
     p.anchor_year,
     p.gender,
     d.drg_severity,
+    d.drg_mortality,
     (p.anchor_year - p.anchor_age) AS birth_year,
     (EXTRACT(YEAR FROM a.admittime) - (p.anchor_year - p.anchor_age)) AS age,
     DATETIME_DIFF(a.dischtime, a.admittime, DAY) as hospital_days,
     COALESCE(pic.prior_icu_admits_last_year, 0) as prior_icu_admits_last_year,
+    COALESCE(DATETIME_DIFF(ie.intime, pic.last_icu_outtime, DAY), 999) as days_since_last_icu,
     COALESCE(pc.num_procedures, 0) as num_procedures,
     COALESCE(dc.num_diagnoses, 0) as num_diagnoses,
+    COALESCE(cm.chf, 0) as chf,
+    COALESCE(cm.cad, 0) as cad,
+    COALESCE(cm.diabetes, 0) as diabetes,
+    COALESCE(cm.copd, 0) as copd,
+    COALESCE(cm.ckd, 0) as ckd,
+    COALESCE(cm.afib, 0) as afib,
+    COALESCE(cm.cancer, 0) as cancer,
+    CASE 
+      WHEN ie.los < 1 THEN 0
+      WHEN ie.los < 3 THEN 1
+      WHEN ie.los < 7 THEN 2
+      ELSE 3
+    END AS los_category,
     LEAD(ie.intime) OVER (PARTITION BY ie.subject_id ORDER BY ie.intime) AS next_icu_intime
   FROM 
     `physionet-data.mimiciv_3_1_icu.icustays` ie
@@ -76,7 +108,7 @@ icu_with_next AS (
     drg_first d
     ON ie.hadm_id = d.hadm_id AND d.rn = 1
   LEFT JOIN
-    prior_icu_counts pic
+    prior_icu_info pic
     ON ie.subject_id = pic.subject_id AND ie.intime = pic.current_intime
   LEFT JOIN
     procedure_counts pc
@@ -84,6 +116,9 @@ icu_with_next AS (
   LEFT JOIN
     diagnosis_counts dc
     ON ie.hadm_id = dc.hadm_id
+  LEFT JOIN
+    comorbidities cm
+    ON ie.hadm_id = cm.hadm_id
   WHERE 
     a.hospital_expire_flag = 0
 )
