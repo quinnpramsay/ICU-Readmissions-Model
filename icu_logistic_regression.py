@@ -9,12 +9,6 @@ X_train, X_test, y_train, y_test = train_test_split(
     stratify=y
 )
 
-numeric_columns = X_train.select_dtypes(include=['int64', 'float64', 'int32', 'float32']).columns.tolist()
-
-datetime_columns = X_train.select_dtypes(include=['datetime64', 'datetime64[ns]']).columns.tolist()
-non_datetime_columns = [col for col in X_train.columns if col not in datetime_columns]
-
-
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
