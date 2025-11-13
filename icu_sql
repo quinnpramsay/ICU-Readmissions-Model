@@ -57,6 +57,68 @@ comorbidities AS (
   GROUP BY
     hadm_id
 ),
+omr_pivot AS (
+  SELECT 
+    subject_id,
+    chartdate,
+    COALESCE(
+      MAX(CASE WHEN result_name = 'Height (Inches)' THEN SAFE_CAST(result_value AS FLOAT64) END),
+      MAX(CASE WHEN result_name = 'Height' THEN SAFE_CAST(result_value AS FLOAT64) END)
+    ) as height_inches,
+    COALESCE(
+      MAX(CASE WHEN result_name = 'Weight (Lbs)' THEN SAFE_CAST(result_value AS FLOAT64) END),
+      MAX(CASE WHEN result_name = 'Weight' THEN SAFE_CAST(result_value AS FLOAT64) END)
+    ) as weight_lbs,
+    COALESCE(
+      MAX(CASE WHEN result_name = 'BMI (kg/m2)' THEN SAFE_CAST(result_value AS FLOAT64) END),
+      MAX(CASE WHEN result_name = 'BMI' THEN SAFE_CAST(result_value AS FLOAT64) END)
+    ) as bmi,
+    MAX(CASE WHEN result_name = 'eGFR' THEN 
+      SAFE_CAST(
+        CASE 
+          WHEN result_value LIKE '>%' THEN REGEXP_REPLACE(result_value, r'[^0-9.]', '')
+          WHEN result_value LIKE '<%' THEN REGEXP_REPLACE(result_value, r'[^0-9.]', '')
+          ELSE result_value
+        END AS FLOAT64
+      )
+    END) as egfr,
+    COALESCE(
+      MAX(CASE WHEN result_name = 'Blood Pressure' THEN result_value END),
+      MAX(CASE WHEN result_name = 'Blood Pressure Sitting' THEN result_value END),
+      MAX(CASE WHEN result_name = 'Blood Pressure Lying' THEN result_value END)
+    ) as blood_pressure
+  FROM 
+    `physionet-data.mimiciv_3_1_hosp.omr`
+  GROUP BY
+    subject_id, chartdate
+),
+omr_baseline AS (
+  SELECT 
+    o.subject_id,
+    ie.stay_id,
+    o.height_inches,
+    o.weight_lbs,
+    o.bmi,
+    o.egfr,
+    o.blood_pressure,
+    ROW_NUMBER() OVER (
+      PARTITION BY ie.stay_id 
+      ORDER BY ABS(DATETIME_DIFF(ie.intime, DATETIME(o.chartdate), DAY))
+    ) as rn
+  FROM 
+    omr_pivot o
+  INNER JOIN
+    `physionet-data.mimiciv_3_1_icu.icustays` ie
+    ON o.subject_id = ie.subject_id
+    AND o.chartdate <= DATE(ie.intime)
+    AND o.chartdate >= DATE_SUB(DATE(ie.intime), INTERVAL 365 DAY)
+  WHERE
+    o.height_inches IS NOT NULL 
+    OR o.weight_lbs IS NOT NULL 
+    OR o.bmi IS NOT NULL 
+    OR o.egfr IS NOT NULL 
+    OR o.blood_pressure IS NOT NULL
+),
 icu_with_next AS (
   SELECT 
     ie.subject_id,
@@ -89,6 +151,11 @@ icu_with_next AS (
     COALESCE(cm.ckd, 0) as ckd,
     COALESCE(cm.afib, 0) as afib,
     COALESCE(cm.cancer, 0) as cancer,
+    ob.height_inches,
+    ob.weight_lbs,
+    ob.bmi,
+    ob.egfr,
+    ob.blood_pressure,
     CASE 
       WHEN ie.los < 1 THEN 0
       WHEN ie.los < 3 THEN 1
@@ -119,6 +186,9 @@ icu_with_next AS (
   LEFT JOIN
     comorbidities cm
     ON ie.hadm_id = cm.hadm_id
+  LEFT JOIN
+    omr_baseline ob
+    ON ie.stay_id = ob.stay_id AND ob.rn = 1
   WHERE 
     a.hospital_expire_flag = 0
 )
