@@ -1,4 +1,3 @@
-
 X = df[feature_cols]
 y = df['readmitted_30day']
 
