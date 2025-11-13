@@ -11,8 +11,8 @@ class DecisionTree:
   def fit(self, X, y, depth = 0):
     n_feats = X.shape[1] if not self.n_features else min(self.n_features, X.shape[1])
     if depth >= self.max_depth or len(np.unique(y)) == 1 or len(y) < self.min_samples_split:
-            self.tree = Counter(y).most_common(1)[0][0]
-            return
+      self.tree = Counter(y).most_common(1)[0][0]
+      return
     feat_idxs = np.random.choice(X.shape[1], n_feats, replace=False)
     best_gain, best_feat, best_thresh = -1, None, None
     for feat in feat_idxs:
