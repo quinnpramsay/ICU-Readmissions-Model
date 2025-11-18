@@ -57,16 +57,3 @@ class RandomForest:
     def score(self, X, y):
         return (self.predict(X) == y).mean()
 
-
-rf = RandomForestClassifier(
-    n_estimators=300,
-    max_depth=150,
-    max_features='sqrt',
-    min_samples_split=2,
-    min_samples_leaf=1
-    class_weight='balanced', 
-    oob_score=True,
-    n_jobs=-1, 
-    random_state=67,
-    verbose=1
-)
