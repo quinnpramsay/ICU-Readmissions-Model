@@ -15,7 +15,7 @@ Because the dataset is large, around 10 GB, we accessed it through Google BigQue
 Logistic Regression is a method used to predict probability of a binary outcome i.e. yes/no 1/0. This works by using the logistic function to model the relation between variables in the dataset and transforming the output as a probability between 1 and 0. For the logistic regression model you chose a threshold that is the decision marker, for ours it being ".460".
 Logistic Regression models look like a sigmoid function between 0 and 1 based on a given output that is a yes or no, like if someone was readmitted into the ICU. 
 
-To run the Logistic Regression model, given in the files under "icu_logistic_regression.py" you will need to make sure that the dataset fits the same as the icu_sql query. Then you have to set any non numerical values from the dataset to numerical values and then use the sclaer function from sklearn to overall fit each type of value into the model at the same size. The output from our model looks like this. 
+To run the Logistic Regression model, given in the files under "icu_logistic_regression.py" you will need to make sure that the dataset fits the same as the "gbq_dataset_create.sql" query. Then you have to set any non numerical values from the dataset to numerical values and then use the sclaer function from sklearn to overall fit each type of value into the model at the same size. The output from our model looks like this. 
 
 
 # XGBoost
