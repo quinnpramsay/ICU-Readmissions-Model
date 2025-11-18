@@ -17,6 +17,8 @@ Logistic Regression models look like a sigmoid function between 0 and 1 based on
 
 To run the Logistic Regression model, given in the files under "icu_logistic_regression.py" you will need to make sure that the dataset fits the same as the "gbq_dataset_create.sql" query. Then you have to set any non numerical values from the dataset to numerical values and then use the sclaer function from sklearn to overall fit each type of value into the model at the same size. The output from our model looks like this. 
 
+# Random Forest 
+
 
 # XGBoost
 
