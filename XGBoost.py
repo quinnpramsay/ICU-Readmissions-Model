@@ -1,10 +1,9 @@
-from xgboost import XGBClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, roc_auc_score
+X = df[feature_cols]
+y = df['readmitted_30day']
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-    )
+    X, y, test_size=0.2, random_state=67, stratify=y
+)
 
 model = XGBClassifier(
     n_estimators=200,       # number of trees
@@ -16,17 +15,11 @@ model = XGBClassifier(
     objective='binary:logistic',
     eval_metric='logloss',  # or 'auc'
     n_jobs=-1,              # use all cores
-    random_state=42
+    random_state=67
 )
 
-model.fit(X_train, y_train)
+model.fit(X_train.values, y_train.to_numpy())
 
 # Predictions
-y_pred_prob = model.predict_proba(X_test)[:, 1]
-y_pred = (y_pred_prob >= 0.5).astype(int)
-
-acc = accuracy_score(y_test, y_pred)
-auc = roc_auc_score(y_test, y_pred_prob)
-
-print("Accuracy:", acc)
-print("ROC AUC:", auc)
+y_pred_prob = model.predict_proba(X_test.values)[:, 1]
+y_pred = (y_pred_prob >= 0.2).astype(int)
