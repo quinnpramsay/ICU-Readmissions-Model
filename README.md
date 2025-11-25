@@ -30,14 +30,23 @@ Implementation of XGBoost is simular to the last two. Access the "icu_xgboosy.py
 # Resources
 
 [1] Alsentzer, E. (2020). Bio_ClinicalBERT [Pretrained language model]. HuggingFace. https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT
+
 [2] Beauvais, B., Whitaker, Z., Kim, F., & Anderson, B. (2022). Is the hospital value-based purchasing program associated with reduced hospital readmissions? Journal of Multidisciplinary Healthcare, 15, 1089–1099. https://doi.org/10.2147/JMDH.S358733
+
 [3] Blinder, Y. (n.d.). all_data.sql [SQL script]. GitHub. https://github.com/YaronBlinder/MIMIC-III_readmission/blob/master/all_data.sql
+
 [4] Deo, R. C. (2015). Machine learning in medicine. Circulation, 132(20), 1920–1930. https://doi.org/10.1161/CIRCULATIONAHA.115.001593
+
 [5] Golas, S. B., Shibahara, T., Agboola, S., Otaki, H., Sato, J., Nakae, T., Hisamitsu, T., Kojima, G., Felsted, J., Kakarmath, S., Kvedar, J., & Jethwani, K. (2018). A machine learning model to predict the risk of 30-day readmissions in patients with heart failure: A retrospective analysis of electronic medical records data. BMC Medical Informatics and Decision Making, 18(1), 44. https://doi.org/10.1186/s12911-018-0620-z
+
 [6] Inan, O. T., Tenaerts, P., Prindiville, S. A., Reynolds, H. R., Dizon, D. S., Cooper-Arnold, K., Turakhia, M. P., Pletcher, M. J., Preston, K. L., Krumholz, H. M., Marlin, B. M., Mandl, K. D., & Califf, R. M. (2020). Digitizing clinical trials. Journal of Personalized Medicine, 10(2), 21. https://doi.org/10.3390/jpm10020021
+
 [7] McNeill, H., & Khairat, S. (2020). Impact of intensive care unit readmissions on patient outcomes and the evaluation of the national early warning score to prevent readmissions: Literature review. JMIR Perioperative Medicine, 3(1), e13782. https://doi.org/10.2196/13782
+
 [8] Moerschbacher, A., & He, Z. (2023). Building prediction models for 30-day readmissions among ICU patients using both structured and unstructured data in electronic health records. In Proceedings of the IEEE International Conference on Bioinformatics and Biomedicine (pp. 4368–4373). https://doi.org/10.1109/bibm58861.2023.10385612
+
 [9] PhysioNet. (2023). MIMIC-IV (version 3.1). https://physionet.org/content/mimiciv/3.1
+
 [10] Toma, M., & Wei, O. C. (2023). Predictive modeling in medicine. Encyclopedia, 3(2), 590–601. https://doi.org/10.3390/encyclopedia3020042
 
 
