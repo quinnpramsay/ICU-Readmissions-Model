@@ -25,6 +25,7 @@ To run the Random Forest model you will see two different random forest codes in
 # XGBoost
 XGBoost (Extreme Gradient Boosting) is an advanced machine learning algorithm that constructs a sequence of decision trees, with each new tree designed to correct the errors of the previous ones. The algorithm optimizes a loss function using gradient descent and incorporates regularization techniques to prevent overfitting. XGBoost is highly efficient and performs well on large datasets with numerous features. For ICU readmission prediction, the algorithm produces a probability score for each patient, representing the risk of readmission. This score can be compared to a selected threshold to classify patients as likely or unlikely to be readmitted. XGBoost often achieves higher predictive accuracy than single-tree models because it iteratively focuses on the cases that are most difficult to predict.
 
+Implementation of XGBoost is simular to the last two. Access the "icu_xgboosy.py" code and make sure to implement all the needed previous codes and the dataset from Google BigQuery. If everything is correct for the pieces beforehand, then all the Machine Learning Models should be interchangable. 
 
 # Resources
 
