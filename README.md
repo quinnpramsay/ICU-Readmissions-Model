@@ -41,6 +41,9 @@ Logistic Regression
 - Original Cost: $28,196,000
 - Comparative Savings: $16,315,200
 
+  <img width="497" height="333" alt="Screenshot 2025-12-02 at 3 12 15 PM" src="https://github.com/user-attachments/assets/3fc503ad-22ae-4529-b2e5-e2cb5da923e8" />
+
+
 Random Forest
 - AUC-ROC Score: 0.744
 - Accuracy: 76%
@@ -48,6 +51,8 @@ Random Forest
 - Recall: 56%
 - Original Cost: $28,196,000
 - Comparative Savings: $16,162,200
+
+<img width="501" height="272" alt="Screenshot 2025-12-02 at 3 12 41 PM" src="https://github.com/user-attachments/assets/4cbf1877-9ba5-44c2-945f-670827d726c2" />
 
 
 XGBoost
@@ -57,6 +62,9 @@ XGBoost
 - Recall: 45%
 - Original Cost: $28,196,000
 - Comparative Savings: $16,811,000
+
+<img width="501" height="272" alt="Screenshot 2025-12-02 at 3 12 59 PM" src="https://github.com/user-attachments/assets/4db96d43-6b9b-4595-9816-62dfa9e30266" />
+
 
 # Conclusion 
 
