@@ -27,6 +27,44 @@ XGBoost (Extreme Gradient Boosting) is an advanced machine learning algorithm th
 
 Implementation of XGBoost is simular to the last two. Access the "icu_xgboosy.py" code and make sure to implement all the needed previous codes and the dataset from Google BigQuery. If everything is correct for the pieces beforehand, then all the Machine Learning Models should be interchangable. 
 
+# Results
+
+When evaluating the performance of predictive models, there are several approaches commonly used in other studies. One approach focuses on patient outcomes, prioritizing the highest recall rate to minimize the number of patients readmitted by ensuring that at-risk patients are correctly identified. Another approach emphasizes the statistical performance of the model, optimizing metrics such as precision, accuracy, and the area under the receiver operating characteristic curve (AUC-ROC) to assess the overall quality and reliability of predictions. While both approaches can be valid, this project adopted a different methodology due to the inherent limitations of relying solely on these metrics.
+In this project, model quality was assessed not only based on AUC-ROC, accuracy, and precision but also on the financial impact of the predictions. To calculate this, the confusion matrix was used, detailing the model’s predictions as true positives, true negatives, false positives, and false negatives. Financial data obtained from previous research and studies were applied to determine the costs associated with patients not readmitted, the costs of false readmissions, and the savings achieved by preventing unnecessary readmissions. This information was then used to calculate the net financial savings relative to a scenario in which the model had not been implemented.
+The following table summarizes the performance metrics and financial impact for each predictive model:
+
+Logistic Regression
+- AUC-ROC Score: 0.74
+- Accuracy: 76%
+- Precision: 59.5%
+- Recall: 57%
+- Original Cost: $28,196,000
+- Comparative Savings: $16,315,200
+
+Random Forest
+- AUC-ROC Score: 0.744
+- Accuracy: 76%
+- Precision: 59%
+- Recall: 56%
+- Original Cost: $28,196,000
+- Comparative Savings: $16,162,200
+
+
+XGBoost
+- AUC-ROC Score: 0.758
+- Accuracy: 83%
+- Precision: 62.5%
+- Recall: 45%
+- Original Cost: $28,196,000
+- Comparative Savings: $16,811,000
+
+# Conclusion 
+
+ This project assessed the performance of three predictive models, Logistic Regression, Random Forest, and XGBoost, using both statistical metrics and financial impact to evaluate model quality. XGBoost achieved the highest AUC-ROC score of 0.758 and accuracy of 83 percent, though its recall rate was lower at 45 percent compared to Logistic Regression at 57 percent and Random Forest at 56 percent. Logistic Regression demonstrated a balanced performance with strong recall and substantial financial savings of $16,315,200. Random Forest showed similar predictive performance but slightly lower savings of $16,162,200. XGBoost, while lower in recall, generated the highest comparative financial savings at $16,811,000. These results highlight the trade-offs between accuracy, recall, and financial impact in predictive modeling for ICU readmissions.
+
+ Overall, all three models demonstrated significant potential to reduce the costs associated with unnecessary readmissions, with comparative savings exceeding $16 million in each case. The findings emphasize that evaluating predictive models in healthcare requires considering both clinical outcomes and economic impact. Logistic Regression provided the most balanced approach between identifying at-risk patients and maximizing recall, while XGBoost excelled in overall predictive accuracy and achieved the highest financial savings. These insights underscore the importance of selecting models that align with both patient care objectives and operational priorities in healthcare settings.
+
+
 # Resources
 
 [1] Alsentzer, E. (2020). Bio_ClinicalBERT [Pretrained language model]. HuggingFace. https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT
